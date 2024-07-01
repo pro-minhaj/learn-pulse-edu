@@ -5,6 +5,10 @@ import { Pencil } from "lucide-react";
 import Player from "next-video/player";
 import VideoUploader from "@/components/globals/VidoeUploder/VideoUploader";
 import OthersUploader from "./others-upload";
+<<<<<<< HEAD
+=======
+import ReactPlayer from 'react-player/youtube';
+>>>>>>> 9f9f3117e268bee5aa5b08410bd35db42fd51456
 
 export const VideoUrlForm = ({ initialData, lessonId }) => {
   const [isEditing, setIsEditing] = useState(false);
@@ -21,7 +25,11 @@ export const VideoUrlForm = ({ initialData, lessonId }) => {
         Video Upload
         <div className="flex items-center gap-3">
           <Button onClick={toggleOthers} variant="secondary">
+<<<<<<< HEAD
             Others
+=======
+            {isOthers ? "Cancel" : "Others"}
+>>>>>>> 9f9f3117e268bee5aa5b08410bd35db42fd51456
           </Button>
           <Button disabled={isUploading} variant="ghost" onClick={toggleEdit}>
             {isEditing ? <>Cancel</> : <><Pencil className="w-4 h-4 mr-2" /> Edit</>}
@@ -32,7 +40,11 @@ export const VideoUrlForm = ({ initialData, lessonId }) => {
       {/* Render logic based on state */}
       {isOthers ? (
         <div className="mt-4">
+<<<<<<< HEAD
           <OthersUploader />
+=======
+          <OthersUploader lessonId={lessonId} toggleOthers={toggleOthers} />
+>>>>>>> 9f9f3117e268bee5aa5b08410bd35db42fd51456
         </div>
       ) : (
         <>
@@ -50,7 +62,19 @@ export const VideoUrlForm = ({ initialData, lessonId }) => {
           ) : (
             videoUrl ? (
               <div className="w-full mt-4 h-60">
+<<<<<<< HEAD
                 <Player className="object-cover w-full h-full" src={"//streamtape.com/get_video?id=W9Pyq3e2o3FbzLm&ip=F0OPKRWPDy9XKxR&token=oyNozItMoWIH&stream=1"} />
+=======
+                {
+                  initialData?.youtube ? (
+                    <div className="w-full h-full">
+                      <ReactPlayer width="100%" height="100%" className="object-cover w-full h-full" url={initialData?.url} />
+                    </div>
+                  ) : (
+                    <Player className="object-cover w-full h-full" src={videoUrl} />
+                  )
+                }
+>>>>>>> 9f9f3117e268bee5aa5b08410bd35db42fd51456
               </div>
             ) : (
               <div className="mt-4">

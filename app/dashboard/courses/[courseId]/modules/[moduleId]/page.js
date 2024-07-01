@@ -66,15 +66,23 @@ const Module = async ({ params: { courseId, moduleId } }) => {
                             />
                         </div>
                     </div>
-                    <div>
+                    {/* <div>
                         <div className='flex items-center gap-x-2'>
                             <IconBadge icon={Video} />
                             <h2 className='text-xl'>Add a video</h2>
+<<<<<<< HEAD
                         </div>
                         <div>
                             <VideoUploader />
                         </div>
                     </div>
+=======
+                        </div>
+                        <div>
+                            <VideoUploader />
+                        </div>
+                    </div> */}
+>>>>>>> 9f9f3117e268bee5aa5b08410bd35db42fd51456
                 </div>
             </div>
         </>
