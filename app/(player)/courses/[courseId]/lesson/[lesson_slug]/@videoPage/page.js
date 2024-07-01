@@ -6,6 +6,8 @@ import { findLessonByModule } from '@/queries/module';
 import Link from 'next/link';
 import { cn } from '@/lib/utils';
 import { getCourseByCourseId } from '@/queries/courses';
+import VideoPlayerComponent from '../_components/VideoPage/VideoPlayerComponent';
+import { Suspense } from 'react';
 
 const Course = async ({ params: { courseId, lesson_slug } }) => {
     const lessonSlug = lesson_slug.replace(/-/g, '0');
@@ -15,7 +17,6 @@ const Course = async ({ params: { courseId, lesson_slug } }) => {
         return <div>Lesson not found</div>;
     }
 
-    const findModule = await findLessonByModule(lesson.id);
     const course = await getCourseByCourseId(courseId);
 
     if (!course) {
@@ -38,12 +39,9 @@ const Course = async ({ params: { courseId, lesson_slug } }) => {
     return (
         <div className='flex flex-col'>
             <div className='w-full'>
-                <VideoPlayer
-                    courseId={courseId}
-                    lessonId={lesson.id}
-                    moduleId={findModule?._id.toString()}
-                    url={lesson.video?.url}
-                />
+                <Suspense fallback={<div className='text-center'>Video Loading...</div>}>
+                    <VideoPlayerComponent courseId={courseId} lesson_slug={lesson_slug} />
+                </Suspense>
             </div>
             <div>
                 <div className='flex flex-col items-center justify-between py-3 md:py-4 md:flex-row'>
